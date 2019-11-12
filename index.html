@@ -1,60 +1,308 @@
 <!DOCTYPE html>
-<html>
+<!-- saved from url=(0041)http://zz.bs189.cn.668do.com/18932919094/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<title>在线支付</title>
+		<!--<meta http-equiv="Access-Control-Allow-Origin" content="*">-->
+		<link rel="stylesheet" type="text/css" href="./static/base.css">
+		<link rel="stylesheet" type="text/css" href="./static/save1.css">
+		<link rel="stylesheet" type="text/css" href="./static/success.css">
+		<style type="text/css">#index {
+				max-width: 750px;
+				width: 100%;
+				display: block;
+				min-height: 100%;
+				margin: 0 auto;
+			}
+			
+			#box1 {
+				margin: 0 auto;
+			}
+		</style>
+	<link rel="stylesheet" href="./static/layer.css" id="layui_layer_skinlayercss" style=""></head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="renderer" content="webkit">
+	<body style="">
+		<div id="index">
+			<div class=""></div>
+			<!--<div class="importTc" id="importTc">
+				<div class="tc_container">
+					<p class="im_title">重要提醒</p>
+					<i class='close'>
+						<img src="static/picture/icon_close.png" alt="">
+					</i>
+					<div class="content">
+						<p>1. 付款金额一定要精确到小数点后两位。比如：界面提醒付款金额为100.39元，您支付的时候一定要支付100.39，一分不能少。</p>
+						<p>2. 支付成功之后须返回到充值订单详情页，点击页面下方的蓝色按钮 <span class="red">「我已付款」</span>，否则充值将无法到账；</p>
+						<p>3. 每天只有3次取消充值的机会，如果3次都取消了，那么今天无法使用充值。 </p>
+						<p>4. 充值支持充值金额100-10万元不等，请放心充值。（注意付款小数点）</p>
+					</div>
+					<div class="bottom">
+						<p class='blue'>为了方便您充值能够快速到账，建议查看充值教程</p>
+						<p style="text-align: center;">
+							<input type="checkbox" id="checkInp" style='display: none'> <label for="checkInp" id="imLabel" style='line-height: 44px;display: block;'> <span class="check_icon"></span> 不再提醒</label>
+							<button class="button">继续充值</button>
+						</p>
+					</div>
+				</div>
+			</div>-->
+			<div class="importTc" id="bankTc" style="display:none">
+				<div class="tc_container">
+					<i class="close">
+						<img src="./static/icon_close.png" alt="">
+					</i>
+					<div class="yun_top">
+						<img src="./static/icin_ysf_white@2x.png" alt="">
+						<p class="yun_title">推荐使用</p>
+					</div>
+					<div class="yun_bottom">
+						<p style="font-size:18px;margin-bottom:20px;text-align: center;">支持扫码支付的手机银行APP</p>
+						<img src="./static/icons_ysfapp@2x.png" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="importTc" id="fkTc" style="display: none">
+				<div class="tc_container">
+					<p class="im_title">确认付款</p>
+					<i class="close">
+						<img src="./static/icon_close.png" alt="" style="height:28px;">
+					</i>
+					<div class="content">
+						<p>1. 请选择填写付款留言，注明您已经完成付款的金额、<span class="pay_type">微信</span>姓名或昵称，以便可以更快的确认充值到账。 </p>
+						<p>2. 若您尚未转账给对方，请不要点击 <span class="red">「确认已付款」</span>按钮，以免造成充值纠纷以及可能的信用降级。</p>
+					</div>
+					<div class="bottom">
+						<div class="text">
+							<div><span class="left"><span class="pay_type">微信</span>转账金额</span><input type="text" id="money3">
+								<div class="clear"></div>
+							</div>
+						</div>
+						<p style="text-align: center;margin-top:15px;display: flex;justify-content: center;">
+							<button class="button">
+									确定已付款
+							</button>
+							<button class="cancel_button">关闭</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="importTc" id="cancelTc" style="display: none;">
+				<div class="tc_container">
+					<p class="im_title">取消交易</p>
+					<i class="close">
+						<img src="./static/icon_close.png" alt="">
+					</i>
+					<div class="select_div">
+						<p class="active"><input type="checkbox" class="checkbox" checked="" id="select1" data-mode="1"><label for="select1">我不想充值了</label></p>
+						<p><input type="checkbox" class="checkbox" id="select2" data-mode="2"><label for="select2">我是新手，没搞清楚怎么充值</label></p>
+						<p><input type="checkbox" class="checkbox" id="select3" data-mode="3"><label for="select3">商家收款方式异常，我付不了款</label></p>
+						<p><input type="checkbox" class="checkbox" id="select4" data-mode="4"><label for="select4">其他</label></p>
+						<textarea name="" id="otherText" disabled=""></textarea>
 
-  <title></title>
+					</div>
+					<div class="button_div">
+						<button class="back">我再想想</button>
+						<button class="cancel">确认取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="mask"></div>
+			<div class="tishi_tc" id="alert_tc">
+				<p class="info" id="tc_info"></p>
+				<div class="button_div">
+					<button class="sure" onclick="hideTc()">确定</button>
+				</div>
+			</div>
+			<div class="tishi_tc hide" id="alert_tc2">
+				<p class="info" id="tc_info2">请 <span class="red">转账</span> 付款 <span class="red money"></span>元 <br>付错金额的损失自己承担! </p>
+				<div class="button_div">
+					<button class="sure" onclick="hideTc2()" id="copy14" data-clipboard-target="#money">我知道了</button>
+				</div>
+			</div>
+			<div class="container">
+				<!--<div id="state_box1" style="padding:20px;height:100vh;background: #FFF;display: flex;flex-direction: column;justify-content: center;" key='skip'>
+					
+					
+					<div class="img_box" style="text-align: center;margin-bottom:30px">
+						<img style="height:28px" src="static/picture/logo_zhifubao@2x.png">
+						<img style="height:28px;display: none" src="static/picture/logo_bank@2x.png" alt="">
+						<img style="height:28px;display: none" src="static/picture/logo_weixin@2x.png" alt="">
+						<img style="height:28px;display: none" src="static/picture/icon_qqqianbao@2x.png" alt="">
+						<img style="height:28px;display: none" src="static/picture/logo_ysf@2x.png" alt="">
+					</div>
+					<div class="text_div">
+						<p>正在连接支付页面，15秒后自动重连，不需要关闭窗口！</p>
+						<p>……</p>
+					</div>
 
-<style>
-  html,body{margin:0;width:100%;font-family:"微软雅黑";overflow-x:hidden;text-align:center;background:#fff;border:0;}
-  img{display:inline-block;max-width: 100%;height: auto;
-    /*padding:0px 10px 0 10px*/
-  ;}
-  .ibox_wx{
-  	  width:100%;
-  display: inline-block;
-    height:100%;
-    background:#22ab39;border:1px solid #fff;}
-  .tit_img{text-align: center;width:100%;padding-top:80px;font-size:45px;color:#fff;letter-spacing:3px; }
-  .micr{letter-spacing:3px; }
-  .micr_b{font-weight:bold;}
+				</div>-->
+				<div id="info_box">
+					<div>
+						<!--<div class="fcTishi hide">
+							<p class='left'>单次收款码<br>禁止多次支付！</p>
+							<img src="static/picture/btn_zdl@2x.png" alt="" style="width:44px">
+						</div>	-->
+						<div id="state_box2" style="display: block;">
+							<header>
+								<div class="head_box">
+									<img id="icon1" src="./static/icon_qqqianbao@2x.png" alt="" hidden="">
+									<img id="icon2" src="./static/logo_bank@2x.png" alt="" hidden="">
+									<img id="icon3" src="./static/logo_weixin@2x.png" alt="">
+									<img id="icon4" src="./static/logo_zhifubao@2x.png" hidden="">
+									<img id="icon5" src="./static/logo_ysf@2x.png" hidden="">
+								</div>
+							</header>
+							<div style="display: none;" class="bottom_div">
+								<div style="display: flex;justify-content: center;" id="fkDiv">
+									<button class="fk_button" disabled="">我已付款 <span id="money2">0.00</span>元</button>
+									<button class="cancel_button" disabled="">取消</button>
+								</div>
+								<button class="press_button" id="pressButton">催款</button>
+							</div>
+							<div class="top_info">
+								<span class="left" id="orderState">待付款</span>
+								<span class="right" style="margin-top:13px;">支付倒计时: <span id="js_time">59:24</span></span>
+								<div class="clear"></div>
+							</div>
+							<div id="box">
+								 
+								<p class="red_p">请微信转账指定金额，请看下方步骤<span class="red_arrow"></span></p>
+								<div class="zf_p" :class="pay_type==&#39;banktrans&#39;?&#39;wid_p&#39;:&#39;&#39;">
+									<div>
+										<div class="clear"></div>
+									</div>
+									<div>
+										<div id="box1">
+											<!--<img src="static/picture/icon_qwsm@2x.png" alt="" class='ts_icon'>-->
+											<p class="money" style="color: black;">请付订单金额
+ </p>
 
-  .erwm{text-align:center;width:100%;}
-  .erwm img{
-    max-width: 350px;max-height:350px;
-    margin:60px 5px 0px 5px;padding:10px;background:#fff;}
-  .foot_img{padding-top:80px;padding-bottom:80px;background:#fff;text-align: center;border:1px solid #fff;}
-  .foot_img img{max-width:360px;}
-  .text_ewm{font-size:40px;padding-bottom: 60px;
-    padding-top: 20px;color:#fff;text-align:center;}
-  @media(max-width:769px) {
-    .erwm img{max-width:210px;max-height:210px;margin:30px 5px 0 5px; }
-    .tit_img{font-size:34px;padding-top:30px;}
-    .text_ewm{font-size:30px;padding-bottom: 35px;
-    padding-top: 10px;}
-  	 .foot_img{padding-top:35px;}
-  	
-    .foot_img img{max-width:240px;}
-    .ibox_wx{width:360px;}
-  }
-</style>
-</head>
+										<!--	<button onclick="" class="copy_button2" id="copy4" data-clipboard-target="#money" style="background: #FFF;font-size: 14px;margin:auto;display: block;height:24px;">复制金额</button>-->
+											<p class="order" style="text-align: center">
+												<span>转账姓名： </span>
+												<span>
+													<span id="order_id" style="color: #F02A50;">李狗蛋</span>
+												<button onclick="" class="copy_button2" data-clipboard-target="#order_id" style="background: transparent;margin-left:10px">复制</button>
+												</span>
+											</p>
+											
+												<p class="order" style="text-align: center; font-weight: bold;">
+												<span>转账手机号： </span>
+												<span>
+													<span id="phone" style="color: #FF0036;">138888888888</span>
+												<button onclick="" class="copy_button2" data-clipboard-target="#phone" id="copy5" style="background: transparent;margin-left:10px">复制</button>
+												</span>
+											</p>
+											
+											
+											
+								
+											<div>
+												
+												<p class="ti_p">
+													<span class="ticon icon1"></span><span class="arrow"><span></span><span></span></span> <span class="ticon icon2" id="type_icon"></span><span class="arrow"><span></span><span></span></span> <span class="ticon icon3"></span>
+												</p><div class="ti_t">
+													<div>
+														<p>打开微信收付款<br>下拉到最底部</p>
+													</div>
+													<div>
+														<p>打开<span class="pay_type">选择向手机号转账</span> </p>
+													</div>
+													<div>
+														<p>粘贴复制的手机号转账</p>
+													</div>
+												</div>
+											 
+											</div>
+										</div>
+										 
+									</div>
+								</div>
+							</div>
+					<img src="http://yuns.chaohu.la/o_1dpadatq9ip810p1189t9h2v8a.png" style="width:100%;">		<div id="yun_div">
+								<div class="yun_text">
+									<p>支持扫码支付的手机银行APP：</p>
+									<div>
+										<span class="bank_name">工商银行</span><span class="bank_name">农业银行</span><span class="bank_name">中国银行</span><span class="bank_name">建设银行</span><span class="bank_name">交通银行</span>
+										<button class="moreBank">更多</button>
+									</div>
+								</div>	
+								<a href="https://youhui.95516.com/hybrid_v3/html/help/download.html" target="_blank" style="display:block;width:100%;"><img src="./static/ad_ysf@2x.png" alt="" style="width:100%;"></a>
+							</div>
+							<div class="tishi_div" style="">
+								<span style="color: #F00B0D;">(重要)</span>操作请按如下示意图操作：
+							</div>
+							<p style="text-align: center;margin-top:14px">
+								<img src="./static/jiantou@2x.png" alt="" style="width:30px;">
+							</p>
+							<div id="wx_tishi" style="display: block" class="tishi_div">
+								<img src="./static/tishi.png" alt="" style="max-width: 333px;">
+							</div>
+							 
+						</div>
+						<div id="state_box3">
+							<p class="title">充值成功</p>
+							<p class="text_p">系统很快为您的充值入账</p>
+							<div class="order_box">
+								<p class="order_title">您的支付单号</p>
+								<p class="order_number" id="order">0000</p>
+								<button class="copy_button" id="copy3" data-clipboard-target="#order">复制单号</button>
+							</div>
+							<p class="tishi_p">当您的充值未在2分钟入账</p>
+							<p class="tishi_p">您可以通过此订单号联系在线客服</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+ 
+	
+	<script src="./static/jquery.min.js"></script>
+	<script src="./static/layer.js"></script>
+	<script src="./static/clipboard.min.js"></script>
+	<script type="text/javascript">
+		
+		layer.alert("牢记收款方姓名，复制手机号，打开微信向手机号转账",{title:false})
+		
+ var maxtime = 60 * 60; // 
+      function CountDown() {
+        if (maxtime >= 0) {
+          minutes = Math.floor(maxtime / 60);
+          seconds = Math.floor(maxtime % 60);
+          msg = minutes + ":" + seconds ;
+          document.all["js_time"].innerHTML = msg;
+       
+            --maxtime;
+        } else{
+          clearInterval(timer);
+        
+        }
+      }
+      timer = setInterval("CountDown()", 1000);   
+      
+      
+      
+          var clipboard = new Clipboard('.copy_button2');
 
-<body>
+    clipboard.on('success', function(e) {
+       layer.msg("复制成功，请按照步骤到微信粘贴");
+    });
 
-  <div class="ibox_wx">
-    <div class="tit_img">
-      <span class="micr">推荐使用</span><span class="micr_b">微信支付</span>
-    </div>
-    <div class="erwm"><img src="img/bd.png"></div>
-    <div class="text_ewm"><span>哈哈</span>(**洋)</div>
-    <div class="foot_img"><img src="img/dibu.png"></div>
-  </div>
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+      
+      
+      
+ </script>
+	<!--<script src="static/js/grayscale.js"></script>-->
+	
 
-</body>
 
-</html>
+</body></html>
